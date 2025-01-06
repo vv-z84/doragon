@@ -9,7 +9,7 @@ class FilepathValidatorTest {
 
     @Test
     fun `test inexistent filepath`() {
-        val invalidFilepath: String = "/notexists"
+        val invalidFilepath = "/notexists"
 
         assertThrows<RuntimeException> {
             validator.validate(invalidFilepath)

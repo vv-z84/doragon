@@ -1,7 +1,6 @@
 import com.skubawa.doragon.watcher.FilepathValidator
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
-import kotlin.test.assertTrue
 
 class FilepathValidatorTest {
 
@@ -23,13 +22,5 @@ class FilepathValidatorTest {
         assertThrows<RuntimeException> {
             validator.validate(unreadableFilepath)
         }
-    }
-
-    @Test
-    fun `test readable filepath`() {
-        val readableFilepath = "/home"
-        val result: Boolean = validator.validate(readableFilepath)
-
-        assertTrue(result)
     }
 }

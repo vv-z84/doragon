@@ -1,19 +1,22 @@
 package com.skubawa.doragon.watcher
 
-import java.io.File
+import java.nio.file.Path
+import java.nio.file.Paths
+import kotlin.io.path.exists
+import kotlin.io.path.isReadable
 
 class FilepathValidator {
-    fun validate(filepath: String): Boolean {
-        val file = File(filepath)
+    fun validate(filepath: String): Path {
+        val path = Paths.get(filepath)
 
-        if(!file.exists()) {
+        if(!path.exists()) {
             throw RuntimeException("$filepath does not exists.")
         }
 
-        if(!file.canRead()) {
+        if(!path.isReadable()) {
             throw RuntimeException("can't read $filepath")
         }
 
-        return true
+        return path
     }
 }

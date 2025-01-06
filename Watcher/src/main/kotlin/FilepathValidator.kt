@@ -4,7 +4,7 @@ import java.io.File
 
 class FilepathValidator {
     fun validate(filepath: String): Boolean {
-        val file: File = File(filepath)
+        val file = File(filepath)
 
         if(!file.exists()) {
             throw RuntimeException("$filepath does not exists.")

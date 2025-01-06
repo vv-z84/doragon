@@ -1,8 +1,6 @@
 import com.skubawa.doragon.watcher.ArgParser
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.expect
 
 class ArgParserTest {
     private val argParser: ArgParser = ArgParser()

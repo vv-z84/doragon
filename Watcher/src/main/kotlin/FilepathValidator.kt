@@ -9,6 +9,10 @@ class FilepathValidator {
     fun validate(filepath: String): Path {
         val path = Paths.get(filepath)
 
+        if(!path.isAbsolute) {
+            throw RuntimeException("Only absolute path is allowed.")
+        }
+
         if(!path.exists()) {
             throw RuntimeException("$filepath does not exists.")
         }

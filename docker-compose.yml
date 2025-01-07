@@ -1,0 +1,11 @@
+services:
+  watcher:
+    build:
+      context: ./Watcher
+      dockerfile: Dockerfile
+    container_name: watcher-container
+    volumes:
+      - ./shared:/watchme
+    environment:
+      - DORAGON_API_BASE_URL=http://localhost:3000
+    restart: unless-stopped

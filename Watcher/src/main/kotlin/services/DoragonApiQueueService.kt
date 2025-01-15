@@ -7,7 +7,7 @@ import io.ktor.http.*
 
 class DoragonApiQueueService(private val httpClient: HttpClient) {
     suspend fun enqueue(task: Task) {
-        val response = httpClient.post() {
+        val response = httpClient.post("/enqueue") {
             contentType(ContentType.Application.Json)
             setBody(task)
         }

@@ -7,5 +7,30 @@ services:
     volumes:
       - ./shared:/watchme
     environment:
-      - DORAGON_API_BASE_URL=http://localhost:3000
+      - DORAGON_API_BASE_URL=http://localhost:8080
     restart: unless-stopped
+    network_mode: "host"
+  database:
+    container_name: database-container
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: doragon
+    ports:
+      - "5432:5432"
+    depends_on:
+      - rabbitmq
+  rabbitmq:
+    image: rabbitmq:4.0.5-management
+    container_name: rabbitmq-container
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
